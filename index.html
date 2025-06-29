@@ -1,75 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Millimetre – Film Diary App</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: rgb(22, 19, 22);
-      color: rgb(232, 232, 232); /* primaryText */
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      background: rgb(70, 50, 81);
-      border-radius: 12px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      padding: 2.5rem 2rem;
-      max-width: 400px;
-      text-align: center;
-      margin-top: 5vh;
-    }
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -1px;
-      color: rgb(232, 232, 232); /* primaryText */
-    }
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: rgb(197, 197, 197); /* secondaryText */
-    }
-    a.button {
-      display: inline-block;
-      background: #222;
-      color: rgb(232, 232, 232); /* primaryText */
-      text-decoration: none;
-      padding: 0.9em 2em;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: background 0.2s;
-    }
-    a.button:hover {
-      background: #444;
-    }
-    .footer {
-      margin-top: 2rem;
-      font-size: 0.95rem;
-      color: rgb(167, 171, 165); /* tertiaryText */
-    }
-    .footer a {
-      color: rgb(167, 171, 165); /* tertiaryText */
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Millimetre</h1>
-    <p>Your personal film diary. Track, remember, and share the movies you love.</p>
-    <a class="button" href="https://testflight.apple.com/join/your-testflight-link" target="_blank" rel="noopener">Join the iOS Beta</a>
-  </div>
-  <div class="footer">
-    <a href="privacy-policy.md" style="color: #888; text-decoration: underline;">Privacy Policy</a>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Millimetre – Film Diary App</title>
+    <style>
+      @import url("assets/fonts/Satoshi_Complete/Fonts/WEB/css/satoshi.css");
+      html {
+        background-color: rgb(70, 50, 81);
+        font-family: "Satoshi", system-ui, sans-serif;
+      }
+      body {
+        font-family: "Satoshi", system-ui, sans-serif;
+        background: url("assets/images/gradientBackground.png") no-repeat center
+          center fixed;
+        background-size: cover;
+        color: rgb(232, 232, 232); /* primaryText */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        background: rgb(70, 50, 81);
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+        border: 1.5px solid rgba(159, 122, 179, 0.2);
+        padding: 2.5rem 2rem;
+        max-width: 400px;
+        width: 90vw;
+        box-sizing: border-box;
+        text-align: center;
+        margin-top: 5vh;
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 1.2rem 0.7rem;
+          max-width: 98vw;
+          margin-top: 2vh;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+        a.button {
+          font-size: 1rem;
+          padding: 0.7em 1.2em;
+        }
+      }
+      h1 {
+        font-size: 2.2rem;
+        font-weight: 700; /* Bold */
+        margin-top: 10px;
+        margin-bottom: 0.5rem;
+        letter-spacing: -1px;
+        color: rgb(232, 232, 232); /* primaryText */
+      }
+      p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: rgb(221, 221, 221); /* secondaryText */
+      }
+      a.button {
+        display: inline-block;
+        background: #222;
+        color: rgb(232, 232, 232); /* primaryText */
+        text-decoration: none;
+        padding: 0.9em 2em;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: background 0.2s;
+      }
+      a.button:hover {
+        background: #444;
+      }
+      .footer {
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: rgb(167, 171, 165); /* tertiaryText */
+      }
+      .footer a {
+        color: rgb(167, 171, 165); /* tertiaryText */
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="assets/images/mmIosIcon.png"
+        alt="Millimetre App Icon"
+        style="
+          width: 96px;
+          height: 96px;
+          border-radius: 20px;
+          /* margin-bottom: 0.2rem; */
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+        "
+      />
+      <h1>Millimetre</h1>
+      <p>
+        Your personal film diary. Track, remember, and share the movies you
+        love.
+      </p>
+      <a
+        class="button"
+        href="https://testflight.apple.com/join/your-testflight-link"
+        target="_blank"
+        rel="noopener"
+        >Join the iOS Beta</a
+      >
+    </div>
+    <div class="footer">
+      <a
+        href="privacy-policy.md"
+        style="color: #888; text-decoration: underline"
+        >Privacy Policy</a
+      >
+    </div>
+  </body>
 </html>
