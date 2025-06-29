@@ -4,7 +4,7 @@ This repository hosts the privacy policy for **Millimetre**, a mobile app for fi
 
 You can view the privacy policy live at:
 
-👉 [https://meowy8.github.io/millimetre-privacy-policy/privacy-policy](https://meowy8.github.io/millimetre-privacy-policy/privacy-policy)
+[https://meowy8.github.io/millimetre-privacy-policy/privacy-policy](https://meowy8.github.io/millimetre-privacy-policy/privacy-policy)
 
 ---
 
