@@ -12,17 +12,32 @@
       }
       body {
         font-family: "Satoshi", system-ui, sans-serif;
-        background: url("assets/images/gradientBackground.png") no-repeat center
-          center fixed;
+        /* background: url("assets/images/gradientBackground.png") no-repeat center
+          center fixed; */
+        background: linear-gradient(
+          180deg,
+          rgba(14, 12, 14, 0.9) 50%,
+          rgba(26, 19, 29, 0.9) 100%
+        );
         background-size: cover;
         color: rgb(232, 232, 232); /* primaryText */
         margin: 0;
-        padding: 0;
+        padding: 16px;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
         align-items: center;
         justify-content: center;
+      }
+      .main-flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        max-width: 1100px;
+        margin-top: 5vh;
+        gap: 3vw;
       }
       .container {
         background: rgb(70, 50, 81);
@@ -34,13 +49,50 @@
         width: 90vw;
         box-sizing: border-box;
         text-align: center;
-        margin-top: 5vh;
+        margin: 0 16px;
+      }
+      .mockup-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 700px;
+        /* width: 100%; */
+        margin: 0 16px;
+      }
+      .mockup-img {
+        width: 100%;
+        max-width: 700px;
+        border-radius: 8px;
+        box-shadow: 8px 8px 24px rgba(0, 0, 0, 0.32);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1),
+          box-shadow 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .mockup-img:active {
+        transform: scale(0.985) translateY(1px);
+        box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.28);
+      }
+      @media (max-width: 900px) {
+        .main-flex {
+          flex-direction: column;
+          gap: 2vh;
+        }
+        .mockup-img {
+          max-width: 98vw;
+          margin-bottom: 1.5rem;
+        }
+        .container {
+          margin-top: 0;
+        }
       }
       @media (max-width: 600px) {
         .container {
           padding: 1.2rem 0.7rem;
           max-width: 98vw;
-          margin-top: 2vh;
         }
         h1 {
           font-size: 1.5rem;
@@ -89,70 +141,131 @@
         color: rgb(167, 171, 165); /* tertiaryText */
         text-decoration: underline;
       }
+      .mockup-overlay {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.2s;
+      }
+      .mockup-overlay.active {
+        display: flex;
+      }
+      .mockup-overlay img {
+        max-width: 90vw;
+        max-height: 92vh;
+        border-radius: 8px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+        background: #18161a;
+        margin: 16px;
+      }
+      .mockup-overlay:active,
+      .mockup-overlay:focus {
+        cursor: zoom-out;
+      }
     </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var mockupImg = document.querySelector(".mockup-img");
+        var overlay = document.getElementById("mockupOverlay");
+        var overlayImg = document.getElementById("mockupOverlayImg");
+        if (mockupImg && overlay && overlayImg) {
+          mockupImg.addEventListener("click", function () {
+            overlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+          });
+          overlay.addEventListener("click", function () {
+            overlay.classList.remove("active");
+            document.body.style.overflow = "";
+          });
+        }
+      });
+    </script>
   </head>
   <body>
-    <div class="container">
+    <div id="mockupOverlay" class="mockup-overlay" tabindex="0">
       <img
-        src="assets/images/mmIosIcon.png"
-        alt="Millimetre App Icon"
-        style="
-          width: 96px;
-          height: 96px;
-          border-radius: 20px;
-          /* margin-bottom: 0.2rem; */
-          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
-        "
+        id="mockupOverlayImg"
+        src="assets/images/mockup.png"
+        alt="Millimetre app mockup fullscreen"
       />
-      <h1>Millimetre</h1>
-      <p>
-        Your personal film diary. Track, remember, and share the movies you
-        love.
-      </p>
-      <a
-        class="button"
-        href="https://testflight.apple.com/join/TgqMHDBC"
-        target="_blank"
-        rel="noopener"
-        >Join the iOS Beta</a
-      >
-      <div
-        style="
-          margin-top: 1.7rem;
-          font-size: 0.8rem;
-          color: #bdbdbd;
-          text-align: left;
-          max-width: 340px;
-          margin-left: auto;
-          margin-right: auto;
-        "
-      >
-        <strong>Notes:</strong>
-        <ul
+    </div>
+    <div class="main-flex">
+      <div class="container">
+        <img
+          src="assets/images/mmIosIcon.png"
+          alt="Millimetre App Icon"
           style="
-            margin: 0.5em 0 0 0;
-            padding: 0;
-            list-style: none;
+            width: 96px;
+            height: 96px;
+            border-radius: 20px;
+            /* margin-bottom: 0.2rem; */
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+          "
+        />
+        <h1>Millimetre</h1>
+        <p>
+          Your personal film diary. Track, remember, and share the movies you
+          love.
+        </p>
+        <a
+          class="button"
+          href="https://testflight.apple.com/join/TgqMHDBC"
+          target="_blank"
+          rel="noopener"
+          >Join the iOS Beta</a
+        >
+        <div
+          style="
+            margin-top: 1.7rem;
+            font-size: 0.8rem;
             color: #bdbdbd;
-            font-size: 0.98em;
+            text-align: left;
+            max-width: 340px;
+            margin-left: auto;
+            margin-right: auto;
           "
         >
-          <li style="margin-bottom: 0.5em">
-            You must download the official
-            <a
-              href="https://apps.apple.com/app/testflight/id899247664"
-              target="_blank"
-              rel="noopener"
-              style="color: #bdbdbd; text-decoration: underline"
-              >TestFlight app</a
-            >
-            from the App Store to join the beta.
-          </li>
-          <li>
-            Millimetre is just for mobile right now, and only works on iOS
-            devices.
-          </li>
-        </ul>
+          <strong>Notes:</strong>
+          <ul
+            style="
+              margin: 0.5em 0 0 0;
+              padding: 0;
+              list-style: none;
+              color: #bdbdbd;
+              font-size: 0.98em;
+            "
+          >
+            <li style="margin-bottom: 0.5em">
+              You must download the official
+              <a
+                href="https://apps.apple.com/app/testflight/id899247664"
+                target="_blank"
+                rel="noopener"
+                style="color: #bdbdbd; text-decoration: underline"
+                >TestFlight app</a
+              >
+              from the App Store to join the beta.
+            </li>
+            <li>
+              Millimetre is just for mobile right now, and only works on iOS
+              devices.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mockup-container">
+        <img
+          src="assets/images/mockup.png"
+          alt="Millimetre app mockup screenshot"
+          class="mockup-img"
+        />
       </div>
     </div>
     <div class="footer">
